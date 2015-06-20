@@ -14,7 +14,7 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 version = ''
-with open('djutils/__init__.py', 'r') as fd:
+with open('arisutils/__init__.py', 'r') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
                         fd.read(), re.MULTILINE).group(1)
 
@@ -23,8 +23,8 @@ if not version:
 
 
 setup(
-    name='djutils',
-    packages=['djutils'],
+    name='arisutils',
+    packages=['arisutils'],
     version=version,
     zip_safe=False,
 

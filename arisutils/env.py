@@ -1,11 +1,7 @@
 from distutils.util import strtobool
-import os
+from os import environ
 
-try:
-    from django.core.exceptions import ImproperlyConfigured
-except ImportError:
-    class ImproperlyConfigured(Exception):
-        pass
+from .exceptions import ImproperlyConfigured
 
 
 __no_default = object()
@@ -33,7 +29,7 @@ def env(key, default=__no_default, cast=None, allow_blank=False):
     cast = _get_cast(key, default, cast)
 
     try:
-        value = os.environ[key]
+        value = environ[key]
     except KeyError:
         if default is not __no_default:
             return default
